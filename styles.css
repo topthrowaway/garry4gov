@@ -1,0 +1,220 @@
+/* General Reset */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+    background: rgb(243, 210, 154);
+}
+
+/* GRID LAYOUT */
+.parent {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    height: 100vh; /* Full viewport height */
+}
+
+/* LEFT SIDEBAR */
+.div1 {
+    grid-area: 1 / 1 / 6 / 2;
+    background-image: url('./images/splash1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* HEADER (Now Div 2 - Right Sidebar) */
+.div2 {
+    grid-area: 1 / 7 / 6 / 8;
+    background-image: url('./images/splash2.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* FOOTER */
+.div3 {
+    grid-area: 6 / 1 / 7 / 8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('./images/header.png');
+    background-size: contain;
+}
+
+/* MAIN CONTENT - TWITCH EMBED */
+/* MAIN CONTENT - Replacing Twitch with Image List */
+.div4 {
+    grid-area: 1 / 2 / 6 / 7;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* IMAGE LIST STYLING */
+.image-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    width: 100%;
+    max-width: 600px; /* Ensures list doesn’t get too wide */
+}
+
+/* EACH ROW (IMAGE + TEXT) */
+.image-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+/* SQUARE RESPONSIVE IMAGES */
+.image-row img {
+    width: 15%; /* Responsive size */
+    max-width: 250px; /* Prevents excessive growth */
+    min-width: 40px; /* Prevents images from getting too small */
+    aspect-ratio: 1 / 1; /* Ensures square shape */
+    border: 3px solid black;
+    object-fit: cover; /* Ensures images fill the square */
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .image-row img {
+        width: 20%;
+        max-width: 60px;
+    }
+    
+    .image-list {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .image-row {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .image-row img {
+        width: 40%;
+        max-width: 80px;
+    }
+}
+
+
+/* TWITCH EMBED - Fully fills available space */
+.twitch-embed {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.twitch-embed iframe {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+}
+
+/* IMAGE LINKS (Inside Footer) */
+.image-links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.image-link {
+    width: 150px;
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* IMAGE BACKGROUNDS */
+.div5 {
+    grid-area: 6 / 3 / 7 / 4;
+    background-image: url('./images/link1.png');
+    background-size: contain;
+}
+
+.div6 {
+    grid-area: 6 / 4 / 7 / 5;
+    background-image: url('./images/link2.png');
+    background-size: contain;
+}
+
+.div7 {
+    grid-area: 6 / 5 / 7 / 6;
+    background-image: url('./images/link3.gif');
+    background-size: contain;
+}
+
+/* RESPONSIVE DESIGN */
+
+/* Tablets */
+@media (max-width: 1024px) {
+    .parent {
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: auto;
+    }
+
+    .div1, .div2 {
+        display: none; /* Hide sidebars on smaller screens */
+    }
+
+    .div4 {
+        grid-area: 1 / 1 / 6 / 6;
+    }
+
+    .image-links {
+        grid-area: auto;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .parent {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .div4 {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .twitch-embed {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .twitch-embed iframe {
+        height: 300px;
+    }
+
+    .image-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image-link {
+        width: 90%;
+        max-width: 200px;
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+}
